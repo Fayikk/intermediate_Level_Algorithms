@@ -452,48 +452,143 @@ namespace MyApp // Note: actual namespace depends on the project name.
             return 0;
         }
 
-        //Verilen dizide en çok tekrar eden elemanı bulma
-        private static void Repeat2(int[] arr)
+        //Verilen dizideki elemanların toplamını ve çarpımını hesaplama
+        private static void SumOdd2(int[] arr)
         {
-            int[] arr2 = new int[arr.Length];
-            int[] arr3 = new int[arr.Length];
-            int pivot = 0;
             int count = 0;
+            int multi = 1;
             for (int i = 0; i < arr.Length; i++)
             {
-                count++;
-                pivot = arr[i];
+                count = count + arr[i];
+                multi = multi * arr[i];
+            }
+            Console.WriteLine("dizideki elemanların toplamı: "+count + "elemanların çarpımı: "+ multi);
+        }
+        //fibonacci dizisine göre n.elamanı bulma
+        //private static int Fibonacci(int number)
+        //{
+        //    int[] arr = new int[number];
+
+        //    int pivot = 0;
+        //    int pivot1 = 1;
+        //    int counter = 0;
+        //    int counter1 = 0;
+        //    for (int i = 0; i < arr.Length; i++)
+        //    {
+        //        counter = i;
+        //    }
+
+        //    for (int i = 1; i < arr.Length; i++)
+        //    {
+        //        counter1 = i;
+        //    }
+
+        //    for (int i = 0; i < arr.Length; i++)
+        //    {
+        //        counter1 = counter1 + counter;
+        //    }
+        //}
+    
+
+        //En çok tekrar eden elemanı bulma
+        private static int Again(int[] arr)
+        {
+            int number = 0;
+            int count = 0;
+            //int count2 = 0;
+            int count1 = 0;
+            int pivot = 0;
+            int pivot2 = 0;
+            //int order = 0;
+            //int forArr3 = 0;
+            int pivot3 = 0;
+            //int count1 = 0;
+            int[] arr2 = new int[arr.Length];
+            int[] arr3 = new int[arr.Length];
+            int[] arr4 = new int[arr.Length];
+            int[] arr5 = new int[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                count = 0;
                 for (int j = 0; j < arr2.Length; j++)
                 {
-                    if (arr2[j] == pivot)
+                    pivot = arr[i];
+                    if (pivot == arr2[j])
                     {
-                        break;
+                        count++;
                     }
-                    else
-                    {
-                        
-                        arr2[count - 1] = pivot;
-                    }
-
-
                 }
-
-              
-
+                if (count == 0)
+                {
+                    arr2[i] = arr[i];
+                }
             }
+
             for (int i = 0; i < arr2.Length; i++)
             {
-                Console.WriteLine(arr2[i]);
+
+                    Console.WriteLine(arr2[i]);
+            }
+            Console.WriteLine("*******************************");
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+
+                count1 = 0;
+                if (arr[i] != 0)
+                {
+                    
+                    pivot2= arr[i];
+                    for (int j = 0; j < arr.Length; j++)
+                    {
+                        if (arr[j] == pivot2)
+                        {
+                            count1++;
+                        }
+                    }
+                }
+                arr3[i] = count1;
+            }
+        
+
+            for (int i = 0; i < arr2.Length; i++)
+            {
+                if (arr2[i]!=0)
+                {
+                    Console.WriteLine("Dizideki elemanlar ve adetleri sırası ile: " + arr2[i] + "den " + arr3[i] + "adet");
+                    arr4[i] = arr3[i];      
+                }
+                arr5[i] = arr3[i];
             }
 
+            for (int i = 0; i < arr4.Length; i++)
+            {
+                number = arr4[i];
+                for (int j = 0; j < arr4.Length; j++)
+                {
+                    if (number > arr4[j])
+                    {
+                        pivot3 = number;
+                        number = arr4[j];
+                        arr4[j] = pivot3;
+                    }
+                }
+            }
 
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr5[i] == arr4[arr4.Length - 1])
+                {
+                    Console.WriteLine("En sık tekrar eden eleman adedi:" + arr4[arr4.Length - 1]);
+                    return arr2[i];
+                }
+
+            }
+
+            return 0;
+            
+            
         }
-
-        //private static int Search(int[] arr)
-        //{
-
-        //}
-
 
 
         static void Main(string[] args)
@@ -502,21 +597,24 @@ namespace MyApp // Note: actual namespace depends on the project name.
             //10+9+8+7+6+5+4+3+2+1
 
             int[] arr = { 38,6,111,88,24,62,-1,15,-8};
-            int[] arr2 = { 1,1,2,1, 2, 3 ,4};
+            int[] arr2 = { 1,1,2,1, 2, 3 ,4,4};
 
+
+
+            //SumOdd2(arr);
             //Mixed(arr);
-            //Console.WriteLine(Repeat2(arr2));
+            Console.WriteLine(Again(arr2));
 
             ////Reverse(arr);
             ////Repeat(arr);
-            Repeat2(arr2);
+            //Repeat2(arr2);
             ////Console.WriteLine(MinNumber(arr));  
             //int a = 100;
             //int b = 250;
             //Console.WriteLine(Obeb(a, b));
             //Console.WriteLine(Jumper(arr));
             //Jumper2(arr);
-           
+
         }
     }
 }
