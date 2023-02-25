@@ -396,6 +396,104 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
 
         }
+        //Verilen bir dizinin ortalamasını hesaplama
+        private static int SumArr(int[] arr)
+        {
+            int count = 0;
+            int counter = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                count = count + arr[i];
+                counter = counter + 1;
+            }
+
+            return count / counter;
+        }
+        //Verilen bir dizinin medyanını hesaplama
+        //Medyan dizi uzunluğu eğer tek sayı ise ortadaki sayı eğer çift ise ortdaki iki sayının ortalamısını alarak bulabilmekteyiz.
+        private static decimal Median(int[] arr)
+        {
+            int[] arr1 = new int[arr.Length];
+            int counter = 0;
+            int pivot = 0;
+            int temp = 0;
+            // 38,6,111,88,24,62,-1,15,-8
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = i+1; j < arr.Length; j++)
+                {
+                    if (arr[i] > arr[j])
+                    {
+                        temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+                arr1[i] = arr[i];
+            }
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                Console.WriteLine(arr1[i]);
+            }
+
+            if (arr.Length%2!=0)
+            {
+                var result = Math.Ceiling((decimal)arr.Length / 2);
+                return arr1[(int)result-1];
+            }
+            else if(arr.Length%2==0) 
+            {
+                var result = (arr.Length / 2);
+                var result1 = (arr.Length / 2)+1;
+                var average = (decimal)(arr1[result] + arr1[result1]) / 2;
+                return average;
+
+            }
+            return 0;
+        }
+
+        //Verilen dizide en çok tekrar eden elemanı bulma
+        private static void Repeat2(int[] arr)
+        {
+            int[] arr2 = new int[arr.Length];
+            int[] arr3 = new int[arr.Length];
+            int pivot = 0;
+            int count = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                count++;
+                pivot = arr[i];
+                for (int j = 0; j < arr2.Length; j++)
+                {
+                    if (arr2[j] == pivot)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        
+                        arr2[count - 1] = pivot;
+                    }
+
+
+                }
+
+              
+
+            }
+            for (int i = 0; i < arr2.Length; i++)
+            {
+                Console.WriteLine(arr2[i]);
+            }
+
+
+        }
+
+        //private static int Search(int[] arr)
+        //{
+
+        //}
+
 
 
         static void Main(string[] args)
@@ -403,14 +501,15 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             //10+9+8+7+6+5+4+3+2+1
 
-            int[] arr = { 38,6,111,88,24,62,-1,15,-8,32};
+            int[] arr = { 38,6,111,88,24,62,-1,15,-8};
+            int[] arr2 = { 1,1,2,1, 2, 3 ,4};
 
-
-            Mixed(arr);
+            //Mixed(arr);
+            //Console.WriteLine(Repeat2(arr2));
 
             ////Reverse(arr);
             ////Repeat(arr);
-
+            Repeat2(arr2);
             ////Console.WriteLine(MinNumber(arr));  
             //int a = 100;
             //int b = 250;
