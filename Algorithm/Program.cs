@@ -464,31 +464,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
             Console.WriteLine("dizideki elemanların toplamı: "+count + "elemanların çarpımı: "+ multi);
         }
-        //fibonacci dizisine göre n.elamanı bulma
-        //private static int Fibonacci(int number)
-        //{
-        //    int[] arr = new int[number];
 
-        //    int pivot = 0;
-        //    int pivot1 = 1;
-        //    int counter = 0;
-        //    int counter1 = 0;
-        //    for (int i = 0; i < arr.Length; i++)
-        //    {
-        //        counter = i;
-        //    }
-
-        //    for (int i = 1; i < arr.Length; i++)
-        //    {
-        //        counter1 = i;
-        //    }
-
-        //    for (int i = 0; i < arr.Length; i++)
-        //    {
-        //        counter1 = counter1 + counter;
-        //    }
-        //}
-    
 
         //En çok tekrar eden elemanı bulma
         private static int Again(int[] arr)
@@ -580,16 +556,45 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 if (arr5[i] == arr4[arr4.Length - 1])
                 {
                     Console.WriteLine("En sık tekrar eden eleman adedi:" + arr4[arr4.Length - 1]);
-                    return arr2[i];
+                    return arr5[i];
+                    //return arr2[i];
                 }
-
             }
-
             return 0;
-            
-            
         }
 
+        //Verilen metindeki ekelime sayısını bulma 
+        private static int Words(string word)
+        {
+            string[] kelimeler = word.Split(" ");
+
+            return kelimeler.Length;
+        }
+        
+        //Verilen bir metindeki en uzun kelimeyi bulan algoritma
+        private static string Words2(string word)
+        {
+            int count = 0;
+            string[] kelimeler = word.Split(" ");
+            string enUzunKelime = kelimeler[0];
+            int deneme = 1;
+            foreach (var item in kelimeler)
+            {
+
+                count = 0;
+                for (int i = 0; i < item.Length; i++)
+                {
+                    count++;
+                }
+                if (count>enUzunKelime.Length)
+                {
+                    enUzunKelime = item;
+                }
+               
+            }
+            return enUzunKelime;
+
+        }
 
         static void Main(string[] args)
         {
@@ -597,13 +602,14 @@ namespace MyApp // Note: actual namespace depends on the project name.
             //10+9+8+7+6+5+4+3+2+1
 
             int[] arr = { 38,6,111,88,24,62,-1,15,-8};
-            int[] arr2 = { 1,1,2,1, 2, 3 ,4,4};
-
-
-
+            int[] arr2 = { 1,1,2,1, 2, 3 ,4,4,1,1,1,1,1,2,2,2,2,3,3,3,3,1,1,1,2,2,2,2,2,2,2,2,2,6,6,6,6,6,6,6,6,6,-1};
+            //EnSikTekrarEdenElemanAdedi(arr2);
+            string example = "thisssssssssss writeeeeee is for trying";
             //SumOdd2(arr);
             //Mixed(arr);
-            Console.WriteLine(Again(arr2));
+            Console.WriteLine(Words2(example));
+            //Console.WriteLine(Words(example));
+            //Console.WriteLine(Again(arr2));
 
             ////Reverse(arr);
             ////Repeat(arr);
