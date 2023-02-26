@@ -596,31 +596,105 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
         }
 
+        //Dize!yi tersine çevirme
+        private static void Reverse3(int[] arr)
+        {
+            int[] arr2 = new int[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr2[arr.Length-1 - i] = arr[i];
+            }
+            for (int i = 0; i < arr2.Length; i++)
+            {
+                Console.WriteLine(arr2[i]);
+            }
+        }
+
+        //Palindrom dizesi(Verilen bir string dizi yada kelime grubu içerisinde palindrom olanları bulma)
+        //MADAM
+        private static string Palindrom3(string Words)
+        {
+            string[] kelimeler = Words.Split(" ");
+            int count = 0;
+            foreach (var item in kelimeler)
+            {
+                count = 0;
+                for (int i = 0; i < item.Length; i++)
+                {
+                       // 0 1                  3  4
+                    if (item[i] == item[item.Length-1-i])
+                    {
+                        count++;
+
+                        continue;
+                    }
+                   
+                }
+                if (count == item.Length)
+                {
+                    return "is palindrome";
+
+                }
+            }
+            return "is not palindrome";
+        }
+
+        //Verilen iki dizede anagram sözcük olup olmadığını bulan;(anagram harflerin yerleri değiştirilince anlamlı sözcük oluşturan)
+        private static string Anagram(string kelime)
+        {
+            string[] kelimeler = kelime.Split(" ");
+            char[] arr;
+            char[] arr1;
+            int count = 0;
+            string deneme = "";
+            string deneme1 = "";
+            for (int i = 0; i < kelimeler.Length; i++)
+            {
+                for (int j = 0; j < kelimeler.Length; j++)
+                {
+                    if (kelimeler[i].Length == kelimeler[j].Length && kelimeler[i] != kelimeler[j])
+                    {
+                       
+                            arr = kelimeler[i].ToCharArray();
+                            arr1 = kelimeler[j].ToCharArray();
+
+                        for (int a = 0; a < arr.Length; a++)
+                        {
+                            for (int b = 0; b < arr.Length; b++)
+                            {
+                                if (arr[a] == arr[b])
+                                {
+                                    count++;
+                                }
+                            }
+                            if (count == arr.Length)
+                            {
+                                return $"this word is anagram{kelimeler[i]}";
+                            }
+                        }
+                        
+                    }
+                }
+
+            }
+
+            return "this example has not anagram;";
+
+        }
+
+
+
+
         static void Main(string[] args)
         {
+            string cumle1 = "rak partisi ırak gözler";
+            string cumle = "ırak gözler";
 
-            //10+9+8+7+6+5+4+3+2+1
 
-            int[] arr = { 38,6,111,88,24,62,-1,15,-8};
-            int[] arr2 = { 1,1,2,1, 2, 3 ,4,4,1,1,1,1,1,2,2,2,2,3,3,3,3,1,1,1,2,2,2,2,2,2,2,2,2,6,6,6,6,6,6,6,6,6,-1};
-            //EnSikTekrarEdenElemanAdedi(arr2);
-            string example = "thisssssssssss writeeeeee is for trying";
-            //SumOdd2(arr);
-            //Mixed(arr);
-            Console.WriteLine(Words2(example));
-            //Console.WriteLine(Words(example));
-            //Console.WriteLine(Again(arr2));
+            Console.WriteLine(Anagram(cumle1));
+           
 
-            ////Reverse(arr);
-            ////Repeat(arr);
-            //Repeat2(arr2);
-            ////Console.WriteLine(MinNumber(arr));  
-            //int a = 100;
-            //int b = 250;
-            //Console.WriteLine(Obeb(a, b));
-            //Console.WriteLine(Jumper(arr));
-            //Jumper2(arr);
-
+            //Reverse3(arr2);
         }
     }
 }
