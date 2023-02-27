@@ -639,7 +639,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             return "is not palindrome";
         }
 
-        //Verilen iki dizede anagram sözcük olup olmadığını bulan;(anagram harflerin yerleri değiştirilince anlamlı sözcük oluşturan)
+        //Verilen dizede anagram sözcük olup olmadığını bulan;(anagram harflerin yerleri değiştirilince anlamlı sözcük oluşturan)
         private static string Anagram(string kelime)
         {
             string[] kelimeler = kelime.Split(" ");
@@ -679,20 +679,183 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
 
             return "this example has not anagram;";
-
         }
 
+        //Verilen dizide en küçük ve en büyük elemanın yerini değiştirme
+        private static void revolution(int[] arr)
+        {
+            int max = 0;
+            int min = 0;
+            int temp = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (max < arr[i])
+                {
+                    max = arr[i];
+                }
+            }
+            min =max;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (min > arr[i])
+                {
+                    min = arr[i];
+                }
+            }
+
+            Console.WriteLine("min" + min);
+            Console.WriteLine("max" + max);
+            //En küçük sayı min;
+            //En büyük sayı max;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i]==min)
+                {
+                    for (int j = 0; j < arr.Length; j++)
+                    {
+                        if (arr[j]==max)
+                        {
+                            temp = arr[i];
+                            arr[i] = arr[j];
+                            arr[j]= temp;
+                        }
+                    }
+                }
+            }
+
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+        
+        }
+
+
+        //3 boyutlu dizi için her boyuttaki elemanların toplamını bulan algoritma
+        private static int dimArr(int[,,] arr)
+        {
+            int count = 0;
+            for (int i = 0; i <= arr.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= arr.GetUpperBound(1); j++)
+                {
+                    for (int k = 0; k <= arr.GetUpperBound(2); k++)
+                    {
+                        count = count + arr[i, j, k];
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        //3 boyutlu bir dizi içerisindeki belirlenen elemana nasıl erişilir
+        private static int dimArr2(int[,,] arr,int number)
+        {
+            int count = 0;
+            for (int i = 0; i <= arr.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= arr.GetUpperBound(1); j++)
+                {
+                    for (int k = 0; k <= arr.GetUpperBound(2); k++)
+                    {
+                        if (arr[i,j,k] == number)
+                        {
+                            Console.WriteLine("aranan eleman sırasıyla indisi içerisindedir.. : " + i + ":" + j + ":" + k);
+                        }
+                    }
+                }
+            }
+            return number;
+        }
+
+        //3 boyutlu bir dizinin elemanları nasıl sıralanır
+        private static void dimArr3(int[,,] arr)
+        {
+            int temp = 0;
+            int[] ondD = new int[arr.Length];
+            int indexes = 0;
+            int indexes1 = 0;
+
+
+            for (int i = 0; i <= arr.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= arr.GetUpperBound(1); j++)
+                {
+                    for (int k = 0; k <= arr.GetUpperBound(2); k++)
+                    {
+                        ondD[indexes] = arr[i, j, k];
+                        indexes++;
+
+                    }
+                }
+            }
+
+            for (int i = 0; i < ondD.Length; i++)
+            {
+                for (int j = 0; j < ondD.Length; j++)
+                {
+                    if (ondD[j] > ondD[i])
+                    {
+                        temp = ondD[i];
+                        ondD[i] = ondD[j];
+                        ondD[j] = temp;
+                    }
+                }
+            }
+
+            for (int i = 0; i <= arr.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= arr.GetUpperBound(1); j++)
+                {
+                    for (int k = 0; k <= arr.GetUpperBound(2); k++)
+                    {
+
+                        arr[i, j, k] = ondD[indexes1];
+                        indexes1++;
+
+                    }
+                }
+            }
+
+            for (int i = 0; i <= arr.GetUpperBound(0); i++)
+            {
+                for (int j = 0; j <= arr.GetUpperBound(1); j++)
+                {
+                    for (int k = 0; k <= arr.GetUpperBound(2); k++)
+                    {
+
+                        Console.WriteLine(arr[i, j, k]);
+
+                    }
+                    Console.WriteLine("------------------------");
+                }
+            }
+        }
 
 
 
         static void Main(string[] args)
         {
-            string cumle1 = "rak partisi ırak gözler";
-            string cumle = "ırak gözler";
+            string cumle1 = "rakı partisi ırak gözler";
+            int[] arr = { 5, 2, 3, 4, 1 };
+
+            int[,,] array3Da = new int[2, 2, 3] 
+            { { { 1, 11, 3 }, { 4, 5, 6 } },
+            { { 7, 8, 9 }, { 10, 2, 12 } } };
 
 
-            Console.WriteLine(Anagram(cumle1));
-           
+
+            //Console.WriteLine(dimArr(array3Da));
+            dimArr3(array3Da);
+
+
+            //revolution(arr);
+
+            //Console.WriteLine(Anagram(cumle1));
+
 
             //Reverse3(arr2);
         }
