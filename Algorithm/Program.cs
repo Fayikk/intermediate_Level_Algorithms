@@ -795,21 +795,15 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine(karakter[i]);
             }
         }
-        
-        private static void SearchingChallenge(string challenge)
+
+        private static int SearchingChallenge(string challenge)
         {
             int counter = 0;
-            char[] karakter = new char[challenge.Length];
-            int[] number = new int[challenge.Length]; 
-            for (int i = 0; i < challenge.Length; i++)
-            {
-                karakter[i] = challenge[i];
-            }
-            for (int i = 0; i < karakter.Length; i++)
-            {
-                Console.WriteLine(karakter[i]);
-            }
-            //return counter;
+
+            string filteredStr = new string(challenge.Where(char.IsDigit).ToArray());
+            int num = int.Parse(filteredStr);
+
+            return num;
         }
 
         static void Main(string[] args)
@@ -818,9 +812,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
             //string dene = "merhaba dünya,benim galaksimi görmene az kaldı";
             string numbers = "75sayı 9Abonman";
             //StringChallenger(dene);
-            SearchingChallenge(numbers);
+            //SearchingChallenge(numbers);
 
-
+            Console.WriteLine(SearchingChallenge(numbers));
 
             }
         }
