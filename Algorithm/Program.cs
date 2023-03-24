@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KellermanSoftware.CompareNetObjects;
+using NUnit.Framework;
+using System;
 using System.Collections;
 
 namespace MyApp // Note: actual namespace depends on the project name.
@@ -85,7 +87,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
             return pivot;
         }
-        
+
 
 
         //dizi içindeki tek sayıların toplamaını
@@ -243,12 +245,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
             int[] arr2 = new int[size];
             int[] arr3 = new int[size];
-            for (int i = 0; i < arr.Length-1; i++)
+            for (int i = 0; i < arr.Length - 1; i++)
             {
                 for (int j = i; j < arr.Length; j++)
                 {
                     temp = arr[j] - arr[i];
-                    if (temp<0)
+                    if (temp < 0)
                     {
                         temp = temp * -1;
                     }
@@ -290,7 +292,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 min = 0;
                 for (int j = i; j < arr.Length; j++)
                 {
-                  
+
                     temp = arr[j] - arr[i];
                     if (temp < 0)
                     {
@@ -308,7 +310,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             for (int i = 0; i < arr3.Length; i++)
             {
-                if (arr3[i]!=0)
+                if (arr3[i] != 0)
                 {
                     Console.WriteLine(arr3[i]);
 
@@ -327,7 +329,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             for (int i = 0; i < arr.Length; i++)
             {
-                for (int j = i+1; j < arr.Length; j++)
+                for (int j = i + 1; j < arr.Length; j++)
                 {
                     counter = arr[i] + arr[j];
                     if (pivot < counter)
@@ -353,12 +355,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 {
                     if (maxNumber == arr[i] + arr[j])
                     {
-                        Console.WriteLine("Dizide toplamları en büyük olan sayılar ->" + arr[i] + "--" + arr[j] +" Toplamları ise -->" + maxNumber);
+                        Console.WriteLine("Dizide toplamları en büyük olan sayılar ->" + arr[i] + "--" + arr[j] + " Toplamları ise -->" + maxNumber);
                     }
                 }
             }
-            
-        
+
+
         }
         //Verilen tam sayı dizisini sıralayın ve her elemanın kendinden önceki eleman ile toplamını bulan algoritma.
 
@@ -369,13 +371,13 @@ namespace MyApp // Note: actual namespace depends on the project name.
             int[] arr2 = new int[arr.Length];
             for (int i = 0; i < arr.Length; i++)
             {
-                for (int j = 0 ; j < arr.Length; j++)
+                for (int j = 0; j < arr.Length; j++)
                 {
                     if (arr[i] > arr[j])
                     {
                         sum = arr[i];
-                        arr[i]= arr[j];
-                        arr[j]=sum;
+                        arr[i] = arr[j];
+                        arr[j] = sum;
                     }
                 }
             }
@@ -388,9 +390,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             for (int i = 1; i < arr.Length; i++)
             {
-                if (i!=arr.Length)
+                if (i != arr.Length)
                 {
-                    sum = arr[i] + arr[i -1];
+                    sum = arr[i] + arr[i - 1];
                 }
                 Console.WriteLine(sum);
             }
@@ -420,7 +422,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             // 38,6,111,88,24,62,-1,15,-8
             for (int i = 0; i < arr.Length; i++)
             {
-                for (int j = i+1; j < arr.Length; j++)
+                for (int j = i + 1; j < arr.Length; j++)
                 {
                     if (arr[i] > arr[j])
                     {
@@ -436,15 +438,15 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine(arr1[i]);
             }
 
-            if (arr.Length%2!=0)
+            if (arr.Length % 2 != 0)
             {
                 var result = Math.Ceiling((decimal)arr.Length / 2);
-                return arr1[(int)result-1];
+                return arr1[(int)result - 1];
             }
-            else if(arr.Length%2==0) 
+            else if (arr.Length % 2 == 0)
             {
                 var result = (arr.Length / 2);
-                var result1 = (arr.Length / 2)+1;
+                var result1 = (arr.Length / 2) + 1;
                 var average = (decimal)(arr1[result] + arr1[result1]) / 2;
                 return average;
 
@@ -462,7 +464,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 count = count + arr[i];
                 multi = multi * arr[i];
             }
-            Console.WriteLine("dizideki elemanların toplamı: "+count + "elemanların çarpımı: "+ multi);
+            Console.WriteLine("dizideki elemanların toplamı: " + count + "elemanların çarpımı: " + multi);
         }
 
 
@@ -503,7 +505,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             for (int i = 0; i < arr2.Length; i++)
             {
 
-                    Console.WriteLine(arr2[i]);
+                Console.WriteLine(arr2[i]);
             }
             Console.WriteLine("*******************************");
 
@@ -513,8 +515,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 count1 = 0;
                 if (arr[i] != 0)
                 {
-                    
-                    pivot2= arr[i];
+
+                    pivot2 = arr[i];
                     for (int j = 0; j < arr.Length; j++)
                     {
                         if (arr[j] == pivot2)
@@ -525,14 +527,14 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 }
                 arr3[i] = count1;
             }
-        
+
 
             for (int i = 0; i < arr2.Length; i++)
             {
-                if (arr2[i]!=0)
+                if (arr2[i] != 0)
                 {
                     Console.WriteLine("Dizideki elemanlar ve adetleri sırası ile: " + arr2[i] + "den " + arr3[i] + "adet");
-                    arr4[i] = arr3[i];      
+                    arr4[i] = arr3[i];
                 }
                 arr5[i] = arr3[i];
             }
@@ -570,7 +572,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             return kelimeler.Length;
         }
-        
+
         //Verilen bir metindeki en uzun kelimeyi bulan algoritma
         private static string Words2(string word)
         {
@@ -586,11 +588,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 {
                     count++;
                 }
-                if (count>enUzunKelime.Length)
+                if (count > enUzunKelime.Length)
                 {
                     enUzunKelime = item;
                 }
-               
+
             }
             return enUzunKelime;
 
@@ -602,7 +604,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             int[] arr2 = new int[arr.Length];
             for (int i = 0; i < arr.Length; i++)
             {
-                arr2[arr.Length-1 - i] = arr[i];
+                arr2[arr.Length - 1 - i] = arr[i];
             }
             for (int i = 0; i < arr2.Length; i++)
             {
@@ -621,14 +623,14 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 count = 0;
                 for (int i = 0; i < item.Length; i++)
                 {
-                       // 0 1                  3  4
-                    if (item[i] == item[item.Length-1-i])
+                    // 0 1                  3  4
+                    if (item[i] == item[item.Length - 1 - i])
                     {
                         count++;
 
                         continue;
                     }
-                   
+
                 }
                 if (count == item.Length)
                 {
@@ -654,9 +656,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 {
                     if (kelimeler[i].Length == kelimeler[j].Length && kelimeler[i] != kelimeler[j])
                     {
-                       
-                            arr = kelimeler[i].ToCharArray();
-                            arr1 = kelimeler[j].ToCharArray();
+
+                        arr = kelimeler[i].ToCharArray();
+                        arr1 = kelimeler[j].ToCharArray();
 
                         for (int a = 0; a < arr.Length; a++)
                         {
@@ -672,7 +674,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                                 return $"this word is anagram{kelimeler[i]}";
                             }
                         }
-                        
+
                     }
                 }
 
@@ -694,7 +696,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     max = arr[i];
                 }
             }
-            min =max;
+            min = max;
             for (int i = 0; i < arr.Length; i++)
             {
                 if (min > arr[i])
@@ -710,15 +712,15 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             for (int i = 0; i < arr.Length; i++)
             {
-                if (arr[i]==min)
+                if (arr[i] == min)
                 {
                     for (int j = 0; j < arr.Length; j++)
                     {
-                        if (arr[j]==max)
+                        if (arr[j] == max)
                         {
                             temp = arr[i];
                             arr[i] = arr[j];
-                            arr[j]= temp;
+                            arr[j] = temp;
                         }
                     }
                 }
@@ -729,7 +731,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             {
                 Console.WriteLine(arr[i]);
             }
-        
+
         }
 
 
@@ -752,7 +754,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
         }
 
         //3 boyutlu bir dizi içerisindeki belirlenen elemana nasıl erişilir
-        private static int dimArr2(int[,,] arr,int number)
+        private static int dimArr2(int[,,] arr, int number)
         {
             int count = 0;
             for (int i = 0; i <= arr.GetUpperBound(0); i++)
@@ -761,7 +763,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 {
                     for (int k = 0; k <= arr.GetUpperBound(2); k++)
                     {
-                        if (arr[i,j,k] == number)
+                        if (arr[i, j, k] == number)
                         {
                             Console.WriteLine("aranan eleman sırasıyla indisi içerisindedir.. : " + i + ":" + j + ":" + k);
                         }
@@ -771,93 +773,55 @@ namespace MyApp // Note: actual namespace depends on the project name.
             return number;
         }
 
-        //3 boyutlu bir dizinin elemanları nasıl sıralanır
-        private static void dimArr3(int[,,] arr)
+        //Girilen string ifadenin ilk harfinin ve boşlultan sonraki harflerinin büyük yazdırılması
+        private static void StringChallenger(string deneme)
         {
-            int temp = 0;
-            int[] ondD = new int[arr.Length];
-            int indexes = 0;
-            int indexes1 = 0;
+            char[] karakter = new char[deneme.Length];
 
-
-            for (int i = 0; i <= arr.GetUpperBound(0); i++)
+            for (int i = 0; i < deneme.Length; i++)
             {
-                for (int j = 0; j <= arr.GetUpperBound(1); j++)
+                karakter[i] = deneme[i];
+            }
+            for (int i = 0; i < karakter.Length; i++)
+            {
+                karakter[0] = Char.ToUpper(karakter[0]);
+                if (karakter[i] == char.Parse(" "))
                 {
-                    for (int k = 0; k <= arr.GetUpperBound(2); k++)
-                    {
-                        ondD[indexes] = arr[i, j, k];
-                        indexes++;
-
-                    }
+                    karakter[i + 1] = Char.ToUpper(karakter[i + 1]);
                 }
             }
-
-            for (int i = 0; i < ondD.Length; i++)
+            for (int i = 0; i < karakter.Length; i++)
             {
-                for (int j = 0; j < ondD.Length; j++)
-                {
-                    if (ondD[j] > ondD[i])
-                    {
-                        temp = ondD[i];
-                        ondD[i] = ondD[j];
-                        ondD[j] = temp;
-                    }
-                }
-            }
-
-            for (int i = 0; i <= arr.GetUpperBound(0); i++)
-            {
-                for (int j = 0; j <= arr.GetUpperBound(1); j++)
-                {
-                    for (int k = 0; k <= arr.GetUpperBound(2); k++)
-                    {
-
-                        arr[i, j, k] = ondD[indexes1];
-                        indexes1++;
-
-                    }
-                }
-            }
-
-            for (int i = 0; i <= arr.GetUpperBound(0); i++)
-            {
-                for (int j = 0; j <= arr.GetUpperBound(1); j++)
-                {
-                    for (int k = 0; k <= arr.GetUpperBound(2); k++)
-                    {
-
-                        Console.WriteLine(arr[i, j, k]);
-
-                    }
-                    Console.WriteLine("------------------------");
-                }
+                Console.WriteLine(karakter[i]);
             }
         }
-
-
+        
+        private static void SearchingChallenge(string challenge)
+        {
+            int counter = 0;
+            char[] karakter = new char[challenge.Length];
+            int[] number = new int[challenge.Length]; 
+            for (int i = 0; i < challenge.Length; i++)
+            {
+                karakter[i] = challenge[i];
+            }
+            for (int i = 0; i < karakter.Length; i++)
+            {
+                Console.WriteLine(karakter[i]);
+            }
+            //return counter;
+        }
 
         static void Main(string[] args)
-        {
-            string cumle1 = "rakı partisi ırak gözler";
-            int[] arr = { 5, 2, 3, 4, 1 };
+            {
 
-            int[,,] array3Da = new int[2, 2, 3] 
-            { { { 1, 11, 3 }, { 4, 5, 6 } },
-            { { 7, 8, 9 }, { 10, 2, 12 } } };
-
+            //string dene = "merhaba dünya,benim galaksimi görmene az kaldı";
+            string numbers = "75sayı 9Abonman";
+            //StringChallenger(dene);
+            SearchingChallenge(numbers);
 
 
-            //Console.WriteLine(dimArr(array3Da));
-            dimArr3(array3Da);
 
-
-            //revolution(arr);
-
-            //Console.WriteLine(Anagram(cumle1));
-
-
-            //Reverse3(arr2);
+            }
         }
     }
-}
