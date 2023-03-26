@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections;
+using System.ComponentModel;
 
 namespace MyApp // Note: actual namespace depends on the project name.
 {
@@ -796,13 +797,162 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
         }
 
+        //Verilen string içerisindeki tüm boşlukları silen algoritma
+        private static void DeleteSpace(string text)
+        {
+            string texter = "";
+            char[] character = new char[text.Length];
+            string[] arr = new string[1];
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] != ' ')
+                {
+                    character[i] = text[i];
+                }
+                else
+                {
+                    character[i] = text[i+1];
+                }
+            }
+
+            for (int i = 0; i < character.Length; i++)
+            {
+                arr[0] += character[i].ToString();
+                //arr[i] = character[i].ToString();
+            }
+            //for (int i = 0; i < arr.Length; i++)
+            //{
+            //    Console.WriteLine(arr[i]);
+            //}
+            Console.WriteLine(arr[0]);
+        }
+
+      //Bir string diziyi tersine çeviren algoritma
+        private static string ReverseArr(string text)
+        {
+            char[] character = new char[text.Length];
+            string[] arr = new string[1];
+            for (int i = 0; i < text.Length; i++)
+            {
+                character[i] = text[i];
+            }
+            for (int i = character.Length-1; i >=0 ; i--)
+            {
+                arr[0] += character[i];
+            }
+            return arr[0];
+        }
+        
+        //Verilen dizi içerisindeki karakterleri küçük harf ile yazdıran
+        private static string LowerCharacter(string text)
+        {
+            char[] character = new char[text.Length];
+            string[] arr = new string[1];
+            for (int i = 0; i < text.Length; i++)
+            {
+                character[i] = text[i];
+            }
+            for (int i = 0; i < character.Length; i++)
+            {
+                character[i] = Char.ToLower(character[i]);
+            }
+            for (int i = 0; i < character.Length; i++)
+            {
+                arr[0] += character[i];
+            }
+            return arr[0];
+        }
+
+        //Verilen 2 string arasındaki farklı karakterlerin sayısını hesaplayan fonksiyon
+
+        private static int CountCharacter(string text,string text1)
+        {
+            int count = 0;
+            int total = 0;
+            bool status = false;
+            char[] character = new char[text.Length];
+            char[] character1 = new char[text1.Length];
+            for (int i = 0; i < text.Length; i++)
+            {
+                character[i] = text[i];
+            }
+            for (int i = 0; i < text1.Length; i++)
+            {
+                character1[i] = text1[i];
+            }
+            if (character.Length > character1.Length)
+            {
+                for (int i = 0; i < character.Length; i++)
+                {
+                    for (int j = 0; j < character1.Length; j++)
+                    {
+                        status = false;
+
+                        if (Char.ToLower(character1[j]) == Char.ToLower(character[i]))
+                        {
+                            status = true;
+                            break;
+                        }
+                    }
+                    if (status == false)
+                    {
+                        count++;
+                    }
+                }
+                total = count + (character1.Length - count);
+            }
+            else if(character.Length<character1.Length)
+            {
+                for (int i = 0; i < character1.Length; i++)
+                {
+                    status = false;
+                    for (int j = 0; j < character.Length; j++)
+                    {
+                        if (Char.ToLower(character1[i]) == Char.ToLower(character[j]))
+                        {
+                            status = true;
+                            break;
+                        }
+                    }
+                    if (status == false)
+                    {
+                        count++;
+                    }
+                }
+                total = count + (character.Length - count);
+            }
+            return total;
+        }
+
+        //Verilen bir string ifade içerisindeki karakterleri alfabetik sıraya göre
+        private static string OrderAlphabet(string text)
+        {
+            char[] character = new char[text.Length];
+            string[] arr = new string[character.Length];
+            string[] arr1 = new string[1];
+
+            for (int i = 0; i < character.Length; i++)
+            {
+                character[i] = text[i];
+                arr[i] = character[i].ToString();
+            }
+            Array.Sort(arr);
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr1[0] += arr[i];
+            }
+            return arr1[0];
+        }
 
 
         static void Main(string[] args)
         {
 
-
-
+            string deneme = "Bdzwpaaaaa";
+            string deneme2 = "Bahtkd";
+            Console.WriteLine(OrderAlphabet(deneme));
+           //b,d,a,
+           //z,w,p,h,t,k
         }
     }
 }
