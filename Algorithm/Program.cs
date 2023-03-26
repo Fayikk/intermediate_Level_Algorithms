@@ -796,26 +796,13 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
         }
 
-        private static int SearchingChallenge(string challenge)
-        {
-            int counter = 0;
 
-            string filteredStr = new string(challenge.Where(char.IsDigit).ToArray());
-            int num = int.Parse(filteredStr);
-
-            return num;
-        }
 
         static void Main(string[] args)
-            {
+        {
 
-            //string dene = "merhaba dünya,benim galaksimi görmene az kaldı";
-            string numbers = "75sayı 9Abonman";
-            //StringChallenger(dene);
-            //SearchingChallenge(numbers);
 
-            Console.WriteLine(SearchingChallenge(numbers));
 
-            }
         }
     }
+}
