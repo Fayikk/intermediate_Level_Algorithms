@@ -9,6 +9,52 @@ namespace MyApp // Note: actual namespace depends on the project name.
     internal class Program
     {
 
+
+        //BubbleSort Question is completed
+        public static void BubbleSort(int[] arr)
+        {
+            int variable = 0;
+            int forCounter = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (i != arr.Length - 1)
+                {
+                    if (arr[i] > arr[i + 1])
+                    {
+                        variable = arr[i];
+                        arr[i] = arr[i + 1];
+                        arr[i + 1] = variable;
+                        forCounter++;
+
+                    }
+                    if (i + 1 == arr.Length)
+                    {
+                        Console.Write("deneme");
+                    }
+                }
+                else
+                {
+                    if (i == arr.Length - 1)
+                    {
+                        if (forCounter != 0)
+                        {
+                            i = -1;
+                            forCounter = 0;
+                        }
+                    }
+                }
+
+
+            }
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i] + ",");
+            }
+
+        }
+
+
+
         //iki sayının toplamını veren
         private static int Sum(int x, int y)
         {
